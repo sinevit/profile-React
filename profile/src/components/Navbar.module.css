@@ -1,0 +1,13 @@
+
+.nav{
+  grid-area: nav;
+  background-color: deepskyblue;
+}
+
+.item{
+  color: white;
+}
+
+.item.active{
+  color: darkblue;
+}
