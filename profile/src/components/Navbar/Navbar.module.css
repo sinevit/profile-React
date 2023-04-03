@@ -1,7 +1,7 @@
 
 .nav{
   grid-area: nav;
-  background-color: deepskyblue;
+  background-color: #abc7dc;
 }
 
 .item{
@@ -9,5 +9,5 @@
 }
 
 .item.active{
-  color: darkblue;
+  color: #325e8f;
 }
