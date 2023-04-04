@@ -1,4 +1,4 @@
-import classes from './Dialogs.module.css'
+// import classes from './Dialogs.module.css'
 
 export const Dialogs = (props) => {
 
