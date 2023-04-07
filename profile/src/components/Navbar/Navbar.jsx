@@ -25,7 +25,7 @@ export const Navbar = (props) => {
         <div className={classes.friendsBlock}>
           <h2>My Friends</h2>
           <div className={classes.friends}>
-            {props.state.map(el => <Friend name={el.name} key={'friend' + el.id} />)}
+            {props.state.map(el => <Friend name={el.name} key={ el.id} />)}
           </div>
         </div>
 
