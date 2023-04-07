@@ -5,7 +5,7 @@ export const ProfileInfo = () => {
     return(
       <div>
         <div>
-          <img alt='japan' src='https://travelclub.kz/storage/tours/August2022/PPotdGnApSOgAdMnveS0.jpg'></img>
+          <img className={classes.image} src='https://travelclub.kz/storage/tours/August2022/PPotdGnApSOgAdMnveS0.jpg' alt='japan' ></img>
         </div>
         <div className={classes.description}>
           ava + description
