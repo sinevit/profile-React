@@ -14,3 +14,14 @@
   color: #325e8f;
   text-decoration: none;
 }
+
+.friendsBlock{
+  background-color: #abc7dc;
+  color: #325e8f;
+  padding: 10px;
+}
+
+.friends{
+  display: flex;
+  justify-content: space-between;
+}

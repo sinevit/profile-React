@@ -1,23 +1,29 @@
+import React from 'react';
 import classes from './MyPosts.module.css'
 import { Post } from './Post/Post'
 
-export const MyPosts = () => {
+export const MyPosts = (props) => {
+  let newPostElement = React.createRef();
+
+  let addPosts = ()=> {
+    let text = newPostElement.current.value;
+    props.addPost(text);
+    newPostElement.current.value = '';
+  }
+
     return(
-      <div>
-        my posts 
+      <div className={classes.postsBlock}>
+        <h1>my posts </h1>
         <div>
-          <textarea></textarea>
-          <button>Add post</button>
-          <button>Remove post</button>
+          <div>
+            <textarea ref={newPostElement}></textarea>
+          </div>
+          <div>
+            <button onClick={addPosts}>Add post</button>
+          </div>
         </div>
         <div>
-          <Post like={21} message={`Желтый лист плывет.
-            У какого берега, цикада,
-            Вдруг проснешься ты?`}/>
-          <Post like={15} message={`Цветок… И еще цветок…
-            Так распускается слива,
-            Так прибывает тепло.`}/>
-          <Post like={1} message='my first post'/>
+          {props.posts.map( post => <Post like={post.like} message={post.message}/>)}
         </div>
       </div>
     )

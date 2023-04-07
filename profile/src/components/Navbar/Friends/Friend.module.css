@@ -1,0 +1,13 @@
+
+.friend{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.circle {
+  background: #45d95b;
+  clip-path: circle(50%);
+  height: 20px;
+  width: 20px;
+}
