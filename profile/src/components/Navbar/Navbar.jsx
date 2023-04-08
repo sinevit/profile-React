@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { Friend } from './Friends/Friend'
 import classes from './Navbar.module.css'
 
-export const Navbar = (props) => {
+export const Navbar = () => {
     return(
       <div>
         <nav className={classes.nav}>
@@ -24,9 +24,21 @@ export const Navbar = (props) => {
         </nav>
         <div className={classes.friendsBlock}>
           <h2>My Friends</h2>
-          <div className={classes.friends}>
+          {/* <StoreContext.Consumer>
+            {(store) => {
+
+              let state = store.getState().sideBar;
+              return(
+                <div className={classes.friends}>
+                {state.map(el => <Friend name={el.name} key={ el.id} />)}
+              </div>
+              )
+            }}
+
+          </StoreContext.Consumer> */}
+          {/* <div className={classes.friends}>
             {props.state.map(el => <Friend name={el.name} key={ el.id} />)}
-          </div>
+          </div> */}
         </div>
 
       </div>

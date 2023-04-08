@@ -1,3 +1,7 @@
+import { dialogsReducer } from "./dialogs-reducer copy";
+import { profileReducer } from "./profile-reducer";
+import { sidebarReducer } from "./sidebar-reducer copy 2";
+
 export let store = {
     _state: {
         dialogsPage:{
@@ -46,32 +50,11 @@ export let store = {
     },
 
     dispatch(action) {
-        if(action.type === 'ADD-POST'){
-            const newPost = {
-                id: 4, 
-                like: 0, 
-                message: this._state.profilePage.newPostText
-            };
-            
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this.rerenderEntireTree();
-        } else if(action.type === 'CHANGE-POST'){
-            this._state.profilePage.newPostText = action.newPostText;
-            this.rerenderEntireTree();
-        }else if(action.type === 'SEND-MESSAGE'){
-            const newMessage = {
-                id: 4, 
-                message: this._state.dialogsPage.newMessageText
-            };
-            
-            this._state.dialogsPage.messages.push(newMessage);
-            this._state.dialogsPage.newMessageText = '';
-            this.rerenderEntireTree();
-        } else if(action.type === 'CHANGE-MESSAGE'){
-            this._state.dialogsPage.newMessageText = action.newMessageText;
-            this.rerenderEntireTree();
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state.sideBar = sidebarReducer(this._state.sideBar, action)
+    
+        this.rerenderEntireTree();
     }
 
 
