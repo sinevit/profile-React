@@ -1,28 +1,28 @@
+import React from 'react';
 import classes from './Users.module.css'
-import axios from 'axios';
 import userPhoto from '../../assets/images/ava.png'
 
+export const User = (props) => {
 
-export const Users = (props) => { 
-
-    let getUsers = () =>{
-        if(props.users.length === 0){ 
-
-            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(
-                response => {
-                    props.setUser(response.data.items)}
-            )
-        }
+    let pagesCount = Math.ceil(props.totalUsersCount/ props.pageSize)
+    let pages = [];
+    for(let i=1; i<= pagesCount; i++){
+        pages.push(i)
     }
 
     return(
+            
         <div>
-            <button onClick={getUsers}>get Users</button>
+            <div>
+                {pages.map(page => {
+                    return <span key={page} onClick={(e)=> { props.onClickPagination(page)}} className={props.currentPage === page? classes.selectedPage : ''}>{page}</span>
+                })}
+            </div>
             {props.users.map(u => 
                 <div key={u.id}>
                     <span>
                         <div>
-                            <img className={classes.userPhoto} src={u.photos.small? u.photos.small :  userPhoto}/>
+                            <img className={classes.userPhoto} src={u.photos.small? u.photos.small :  userPhoto} alt="avatar"/>
                         </div>
                         <div>
                             {u.followed ? 
@@ -47,3 +47,5 @@ export const Users = (props) => {
         </div>
     )
 }
+
+  

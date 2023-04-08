@@ -13,7 +13,7 @@ export const Navbar = () => {
             <NavLink to="/dialogs" className = { navData => navData.isActive ? classes.active : classes.item }>Dialogs</NavLink>
           </div>
           <div className={classes.item}>
-            <NavLink to="/news" className = { navData => navData.isActive ? classes.active : classes.item }>News</NavLink>
+            <NavLink to="/users" className = { navData => navData.isActive ? classes.active : classes.item }>News</NavLink>
           </div>
           <div className={classes.item}>
             <NavLink to="/music" className = { navData => navData.isActive ? classes.active : classes.item }>Music</NavLink>
