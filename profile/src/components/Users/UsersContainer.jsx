@@ -4,7 +4,6 @@ import { User } from './User';
 import { connect } from "react-redux";
 import {followUser,unfollowUser,setUser,setCurrentPage,
     setTotalUsersCount,toogleIsFetching} from '../../redux/users-reducer'
-import preloader from '../../assets/images/loader.svg'
 import { Preloader } from '../common/Preloader/Preloader';
 
 
@@ -56,16 +55,6 @@ let mapStateToProps = (state) => {
         isFetching: state.usersPage.isFetching
     }
 }
-// let mapDispatchToProps = (dispatch) => {
-//     return{
-//         followUser: (userID) => dispatch(followUserAC(userID)),
-//         unfollowUser: (userID) => dispatch(unfollowUserAC(userID)),
-//         setUser: (users) => dispatch(setUsersAC(users)),
-//         setCurrentPage: (currentPage) => dispatch(setCurrentPageAC(currentPage)),
-//         setTotalUsersCount: (totalUsers) => dispatch(setTotalUsersCountAC(totalUsers)),
-//         toogleIsFetching: (isFetching) => dispatch(setIsFetchingAC(isFetching))
-//     }
-// }
 
 export default connect(mapStateToProps,{ followUser,unfollowUser,setUser,setCurrentPage,
     setTotalUsersCount,toogleIsFetching

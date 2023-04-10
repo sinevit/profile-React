@@ -1,7 +1,12 @@
 
+import { Preloader } from '../../common/Preloader/Preloader'
 import classes from './ProfileInfo.module.css'
 
-export const ProfileInfo = () => {
+export const ProfileInfo = (props) => {
+    if(!props.profile){
+      return <Preloader />
+    }
+
     return(
       <div>
         <div>
@@ -9,7 +14,7 @@ export const ProfileInfo = () => {
         </div>
         <div className={classes.description}>
           ava + description
-          {/* <img src='https://img.freepik.com/premium-vector/masked-samurai-girl-hand-drawn-illustration-vector_73644-9.jpg?w=2000' alt='samuray'></img> */}
+          <img src={props.profile.photos.large} alt='samuray'></img>
         </div>
       </div>
     )
