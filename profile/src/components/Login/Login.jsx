@@ -1,22 +1,22 @@
 import { Field, reduxForm } from "redux-form"
 import { Input } from "../common/Preloader/FormsControls/FormControls"
 import { maxLengthCreator, required } from "../../utils/validate"
+import { connect } from "react-redux";
+import { login } from '../../redux/auth-reducer'
+import { Navigate } from "react-router";
 
-const maxLength10 = maxLengthCreator(10);
+const maxLength10 = maxLengthCreator(20);
 export const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field component={Input} name={'login'} 
-                placeholder={"Login"} validate={[required, maxLength10]}/>
-            </div>
-            <div>
-                <Field component={Input} name={'password'} 
-                placeholder={"Password"} validate={[required, maxLength10]}/>
-            </div>
-            <div>
-                <Field component={Input} name={'rememberMe'} type={'checkbox'}/>remember me
-            </div>
+
+            <Field component={Input} name={'email'} 
+            placeholder={"Login"} validate={[required, maxLength10]}/>
+
+            <Field component={Input} name={'password'} type={'password'}
+            placeholder={"Password"} validate={[required, maxLength10]}/>
+
+            <Field component={Input} name={'rememberMe'} type={'checkbox'}/>remember me
             <div>
                 <button>Login</button>
             </div>
@@ -27,9 +27,14 @@ const LoginReduxForm = reduxForm({
     form: 'login'
 })(LoginForm)
 
-export const Login = () => {
+const Login = (props) => {
     const onSubmit =(formData) => {
         console.log(formData)
+        props.login(formData.email, formData.password, formData.rememberMe)
+    }
+
+    if(props.isAuth){
+        return <Navigate to={'/profile'} />
     }
 
     return (
@@ -38,3 +43,9 @@ export const Login = () => {
         <LoginReduxForm onSubmit={onSubmit}/>
     </div>)
 }
+
+const mapStateToProps = (state)=> ({
+    isAuth: state.auth.isAuth,
+})
+
+export default connect(mapStateToProps, {login})(Login)

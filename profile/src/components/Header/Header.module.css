@@ -2,6 +2,7 @@
   grid-area: header;
   background-color: #abc7dc;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
