@@ -27,8 +27,12 @@ export const User = (props) => {
                         </NavLink>
                         <div>
                             {u.followed ? 
-                            <button onClick={() => {props.unfollowUser(u.id)}}>Unfollow</button>:
-                            <button onClick={() => {props.followUser(u.id)}}>Follow</button>}
+                            <button disabled={props.followingProgress.some(id => id === u.id)} onClick={() => {
+                                props.unfollow(u.id)
+                            }}>Unfollow</button>
+                            :<button disabled={props.followingProgress.some(id => id === u.id)} onClick={() => {
+                                props.follow(u.id)
+                            }}>Follow</button>}
         
                         </div>
                     </span>

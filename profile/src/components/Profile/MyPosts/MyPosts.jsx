@@ -14,6 +14,7 @@ export const MyPosts = (props) => {
     props.changePosts(text);
   }
 
+
     return(
       <div className={classes.postsBlock}>
         <h1>my posts </h1>
