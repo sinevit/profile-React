@@ -1,11 +1,10 @@
 import { MyPostsContainer } from './MyPosts/MyPostsContainer'
-import classes from './Profile.module.css'
 import { ProfileInfo } from './ProfileInfo/ProfileInfo'
 
-export const Profile = (props) => {
+export const Profile = ({profile, status, updateStatus }) => {
     return(
       <div>
-        <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
+        <ProfileInfo profile={profile} status={status} updateStatus={updateStatus}/>
         <MyPostsContainer />
       </div>
     )

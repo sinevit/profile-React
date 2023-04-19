@@ -6,9 +6,9 @@ import { login } from '../../redux/auth-reducer'
 import { Navigate } from "react-router";
 
 const maxLength10 = maxLengthCreator(20);
-export const LoginForm = (props) => {
+export const LoginForm = ({handleSubmit}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
             <Field component={Input} name={'email'} 
             placeholder={"Login"} validate={[required, maxLength10]}/>
@@ -29,7 +29,6 @@ const LoginReduxForm = reduxForm({
 
 const Login = (props) => {
     const onSubmit =(formData) => {
-        console.log(formData)
         props.login(formData.email, formData.password, formData.rememberMe)
     }
 

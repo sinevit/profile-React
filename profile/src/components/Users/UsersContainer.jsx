@@ -1,5 +1,5 @@
 import React from 'react';
-import { User } from './User';
+import { Users } from './Users';
 import { connect } from "react-redux";
 import {follow,unfollow,setCurrentPage,
     toogleFollowingProgress, getUsers} from '../../redux/users-reducer'
@@ -22,7 +22,7 @@ class UsersContainer extends React.Component{
     render() {
         return <>
             {this.props.isFetching ? <Preloader /> : null}
-            <User totalUsersCount={this.props.totalUsersCount}
+            <Users totalUsersCount={this.props.totalUsersCount}
             pageSize={this.props.pageSize} 
             currentPage={this.props.currentPage}
             onClickPagination={this.onClickPagination}
