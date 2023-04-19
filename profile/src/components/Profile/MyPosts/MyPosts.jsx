@@ -6,6 +6,7 @@ import { Textarea } from '../../common/Preloader/FormsControls/FormControls';
 import { maxLengthCreator, required } from '../../../utils/validate';
 
 export const MyPosts = (props) => {
+  console.log('RENDER')
     const addPost = (values) => {
         props.addPosts(values.post);
     }
@@ -15,7 +16,7 @@ export const MyPosts = (props) => {
         <h1>my posts </h1>
         <PostsReduxForm onSubmit={addPost}/>
         <div>
-          {props.posts.map( post => <Post like={post.like} message={post.message} key={post.id}/>)}
+          {[...props.posts].reverse().map( post => <Post like={post.like} message={post.message} key={post.id}/>)}
         </div>
       </div>
     )
