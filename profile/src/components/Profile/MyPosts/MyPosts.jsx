@@ -6,7 +6,6 @@ import { Textarea } from '../../common/Preloader/FormsControls/FormControls';
 import { maxLengthCreator, required } from '../../../utils/validate';
 
 export const MyPosts = (props) => {
-  console.log('RENDER')
     const addPost = (values) => {
         props.addPosts(values.post);
     }
