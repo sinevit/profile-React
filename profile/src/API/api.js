@@ -4,6 +4,7 @@ const instance = axios.create({
     headers:{
         // "API-KEY": 'b1775b2f-c3a5-4509-8dc9-90b5629de7c3'
         "API-KEY": 'e5eb30d8-6112-47aa-88f0-f6f144aa53be'
+        // "API-KEY": 'c515c1bc-3336-4bd7-bd7f-3bfdd67b63f5'
     },
     withCredentials: true,
 })
@@ -25,14 +26,22 @@ export const UsersAPI = {
         return instance.post(`follow/${userID}`)
         .then(response => response.data)
     },
-    login(email, password, rememberMe){
-        return instance.post(`auth/login`, {email, password, rememberMe})
+    login(email, password, rememberMe=false, captcha='null'){
+        return instance.post(`auth/login`, {email, password, rememberMe,captcha})
         .then(response => response.data)
     },
     logout(){
         return instance.delete(`auth/login`)
         .then(response => response.data)
     },
+}
+
+export const securityAPI = {
+    getCaptchaUrl(){
+        debugger
+        return instance.get(`security/get-captcha-url`)
+        .then(response => response.data)
+    }
 }
 
 export const profileAPI = {
@@ -57,6 +66,10 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         })
+        .then(response => response.data)
+    },
+    saveProfile(profile){
+        return instance.put(`profile`, profile)
         .then(response => response.data)
     },
 }

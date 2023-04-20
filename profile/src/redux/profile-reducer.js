@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form";
 import { profileAPI } from "../API/api";
 
 const ADD_POST = 'profile/ADD_POST'
@@ -69,7 +70,6 @@ export const savePhotoSucsess = (photos) => ({ type: SAVE_PHOTO_SUCCSES, photos 
 
 export const getUserID = (profileId) => async (dispatch) => {
     let response = await profileAPI.getProfileID(profileId);
-
     dispatch(setUserProfile(response));
 }
 
@@ -92,4 +92,25 @@ export const savePhoto = (file) => async (dispatch) => {
     if (response.resultCode === 0) {
         dispatch(savePhotoSucsess(response.data.photos))
     };
+}
+export const saveProfile = (profile) => async (dispatch, getState) => {
+    const Id = getState().auth.userId;
+    let response = await profileAPI.saveProfile(profile);
+    debugger
+    if (response.resultCode === 0) {
+        dispatch(getUserID(Id))
+    }else{
+        debugger
+        // console.log(response.messages[0])
+        // console.log(response.messages[0].includes('Contacts'))
+        // if(response.messages[0].includes('Contacts')){
+        //     console.log(response.messages[0].split('->')[1].split(')')[0].toLowerCase())
+        //     const contactsElem = response.messages[0].split('->')[1].split(')')[0].toLowerCase();
+        //     dispatch(stopSubmit('profile',{'contacts': {contactsElem: response.messages[0]}}))
+        // }else{
+        //     dispatch(stopSubmit('profile',{_error: response.messages[0]}))
+        // }
+        dispatch(stopSubmit('profile',{_error: response.messages[0]}))
+        return Promise.reject(response.messages[0])
+    }
 }

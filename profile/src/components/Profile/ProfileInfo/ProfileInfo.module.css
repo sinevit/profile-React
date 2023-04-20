@@ -15,3 +15,12 @@
 .mainPhoto{
   width: 300px;
 }
+
+.contact{
+  padding-left: 10px;
+}
+
+.error{
+  color:pink;
+  border: 1px solid pink;
+}

@@ -29,7 +29,7 @@ export const ProfileStatus = (props) => {
     return(
       <div>
         {!status && <div>
-            <span onDoubleClick={activate}>{props.status}</span>
+          <b>Status</b>: <span onDoubleClick={activate}>{props.status}</span>
         </div>}
         {status && <div>
             <input onChange={changeStatus} autoFocus={true} onBlur={deactivate} value={statusValue}/>
