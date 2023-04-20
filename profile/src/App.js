@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import { Navbar } from './components/Navbar/Navbar';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter, HashRouter } from 'react-router-dom';
 
 // import DialogsContainer  from './components/Dialogs/DialogsContainer';
 // import UsersContainer from './components/Users/UsersContainer';
@@ -17,7 +17,7 @@ const UsersContainer = React.lazy(() => import('./components/Users/UsersContaine
 
 const App = (props) => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className='app-wrapper'>
         <HeaderContainer />
         <Navbar />
@@ -33,7 +33,7 @@ const App = (props) => {
 
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

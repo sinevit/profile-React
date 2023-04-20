@@ -1,11 +1,11 @@
 import { Field, reduxForm } from "redux-form"
-import { Input } from "../common/Preloader/FormsControls/FormControls"
+import { Input } from "../common/FormsControls/FormControls"
 import { maxLengthCreator, required } from "../../utils/validate"
 import { connect } from "react-redux";
 import { login } from '../../redux/auth-reducer'
 import { Navigate } from "react-router";
 
-const maxLength10 = maxLengthCreator(20);
+const maxLength10 = maxLengthCreator(30);
 export const LoginForm = ({handleSubmit}) => {
     return (
         <form onSubmit={handleSubmit}>

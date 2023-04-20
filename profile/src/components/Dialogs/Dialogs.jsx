@@ -4,7 +4,7 @@ import { DialogItem } from './DialogItem.jsx/DialogItem'
 import classes from './Dialogs.module.css'
 import { Message } from './Message/Message'
 import { Field, reduxForm } from 'redux-form';
-import { Textarea } from '../common/Preloader/FormsControls/FormControls';
+import { Textarea } from '../common/FormsControls/FormControls';
 import { maxLengthCreator, required } from '../../utils/validate';
 
 
@@ -13,7 +13,7 @@ export const Dialogs = (props) => {
     const addMessage = (values) => {
         props.sendMessage(values.newMessageText);
     }
-    if (!props.isAuth) return <Navigate to={'/login'} />
+    // if (!props.isAuth) return <Navigate to={'/login'} />
 
     return (
         <div className={classes.dialogs}>
